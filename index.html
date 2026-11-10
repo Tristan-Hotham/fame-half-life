@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>The half-life of fame | Attention to 16,397 people on English Wikipedia after their deaths</title>
+<meta name="description" content="How much more do people read about someone after they die, how fast does it fade, and who keeps the attention? 16,397 people who died 2016 to 2023, followed on English Wikipedia.">
+<meta property="og:title" content="The half-life of fame">
+<meta property="og:description" content="In the month someone notable dies, their Wikipedia article is read 14.9 times as much as usual. Two to three years later it is back to 0.98 of the old level.">
+<meta property="og:image" content="https://maps.tristanhotham.com/fame-half-life/header.png">
+<meta property="og:url" content="https://maps.tristanhotham.com/fame-half-life/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800;9..144,900&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<style>
+:root{--bg:#F6EED8;--panel:#EFE3C4;--fg:#2B2119;--muted:#6E604E;--rule:#E2D3AE;--card:#FBF5E4;--border:#D3C29A;--hot:#B4442E;--cool:#2F6A9E;--grid:#E6D8B5;
+  --display:"Fraunces",Georgia,serif;--body:"Source Serif 4",Georgia,serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1A1612;--panel:#241E18;--fg:#EFE6D4;--muted:#ADA08B;--rule:#3A3128;--card:#211B15;--border:#4D4234;--hot:#E07A6C;--cool:#8FB4DA;--grid:#3A3128;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1A1612;--panel:#241E18;--fg:#EFE6D4;--muted:#ADA08B;--rule:#3A3128;--card:#211B15;--border:#4D4234;--hot:#E07A6C;--cool:#8FB4DA;--grid:#3A3128;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 18px/1.62 var(--body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));overflow-x:hidden}
+.wrap{max-width:720px;margin:0 auto;padding-block:20px 64px}
+.wide{max-width:1120px;margin:0 auto}
+a{color:inherit;text-decoration-color:var(--hot);text-underline-offset:3px}
+.kicker{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.kicker b{background:var(--hot);color:#fff;padding:5px 8px;font-weight:500}
+h1{font:900 clamp(34px,5.4vw,58px)/1 var(--display);letter-spacing:-.02em;margin:14px 0 10px;text-wrap:balance}
+h1 .a{color:var(--hot)}
+.dek{font-size:20px;line-height:1.45;margin:0 0 6px;max-width:760px}
+h2{font:800 34px/1.04 var(--display);letter-spacing:-.01em;margin:54px 0 10px;text-wrap:balance}
+h2 .n{font:500 13px/1 var(--mono);color:var(--hot);display:block;letter-spacing:.1em;margin-bottom:10px}
+p{margin:0 0 16px}
+.byline{font:400 13px/1.4 var(--mono);color:var(--muted);margin-top:12px}
+.src{font:400 12px/1.45 var(--mono);color:var(--muted);margin-top:10px}
+ul.plain{padding-left:20px} ul.plain li{margin:4px 0}
+details{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:10px 0;margin:18px 0;font-size:16px}
+summary{font:500 13px/1.4 var(--mono);letter-spacing:.06em;text-transform:uppercase;cursor:pointer;color:var(--muted)}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin:30px 0 0}
+.cta a{font:500 13px/1 var(--mono);text-decoration:none;border:1px solid var(--fg);padding:11px 14px;border-radius:3px}
+.cta a.p{background:var(--hot);border-color:var(--hot);color:#fff}
+footer{border-top:6px double var(--fg);margin-top:56px;padding-top:16px;font:400 13px/1.55 var(--mono);color:var(--muted)}
+footer p{margin:0 0 10px}
+.theme{font:500 12px/1 var(--mono);background:var(--card);color:var(--fg);border:1px solid var(--border);border-radius:3px;padding:4px 8px;cursor:pointer;min-height:28px}
+.figure{margin:22px 0}.figure img{width:100%;display:block;border:1px solid var(--border);background:#F6EED8}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:22px 0}
+.stat b{display:block;font:900 40px/1 var(--display);color:var(--hot)}
+.stat span{font:400 13px/1.35 var(--mono);color:var(--muted)}
+table.t{width:100%;border-collapse:collapse;font:400 13.5px/1.4 var(--mono);margin:12px 0 4px}
+table.t th{text-align:left;font-weight:500;border-bottom:2px solid var(--fg);padding:5px 6px 5px 0}
+table.t td{border-bottom:1px solid var(--rule);padding:5px 6px 5px 0;vertical-align:top}
+table.t td.r,table.t th.r{text-align:right}
+.tscroll{overflow-x:auto}
+.topbar{height:40px;display:flex;align-items:center;gap:14px;margin:0 calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:0 max(14px,env(safe-area-inset-left,0px));border-bottom:3px double var(--fg);background:var(--bg);overflow:hidden;white-space:nowrap}
+.tb-name{font:800 18px/1 var(--display);color:var(--hot);text-decoration:none}
+.tb-k{font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.tb-links{margin-left:auto;display:flex;gap:16px;align-items:center;font:500 12px/1 var(--mono)}
+.tb-links a{text-decoration:none}
+.head{padding:26px 0 6px}
+/* chart */
+.card{position:relative;background:var(--card);border:1px solid var(--border);border-radius:4px;padding:14px 14px 10px;margin:18px 0 8px}
+.card.mfs-fake,.card:fullscreen{padding:18px 22px;overflow:auto;display:flex;flex-direction:column}
+.card:fullscreen .plot,.card.mfs-fake .plot{flex:1;min-height:0}
+.ctl{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;padding-right:44px}
+.ctl .lab{font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.seg{display:inline-flex;border:1px solid var(--border);border-radius:999px;overflow:hidden}
+.seg button .sh{display:none}.seg button{white-space:nowrap;font:500 12px/1 var(--mono);background:none;color:var(--fg);border:0;padding:8px 11px;cursor:pointer;min-height:34px}
+.seg button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 4px}
+.chip{font:500 12px/1 var(--mono);background:var(--bg);color:var(--fg);border:1px solid var(--border);border-radius:999px;padding:7px 10px 7px 8px;cursor:pointer;min-height:32px;display:inline-flex;align-items:center;gap:6px}
+.chip i{width:12px;height:12px;border-radius:50%;display:inline-block;background:var(--c);opacity:.25}
+.chip[aria-pressed="true"]{border-color:var(--fg)}.chip[aria-pressed="true"] i{opacity:1}
+.plot{position:relative;width:100%;height:440px}
+.plot svg{width:100%;height:100%;display:block;overflow:visible}
+.plot .ax text{font:400 11.5px var(--mono);fill:var(--muted)}
+.plot .grid line{stroke:var(--grid);stroke-width:1}
+.plot .lbl{font:500 12px var(--mono);paint-order:stroke;stroke:var(--card);stroke-width:4px}
+.tip{position:absolute;pointer-events:none;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:7px 9px;font:400 12px/1.4 var(--mono);color:var(--fg);box-shadow:0 2px 10px rgba(0,0,0,.15);display:none;min-width:170px;z-index:5}
+.tip b{font-weight:500}
+.tip .sw{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px}
+.note{font:400 12px/1.45 var(--mono);color:var(--muted);margin:6px 0 0}
+.gtab{font:400 12.5px/1.35 var(--mono);width:100%;border-collapse:collapse;margin-top:10px}
+.gtab th{font-weight:500;text-align:right;border-bottom:1px solid var(--fg);padding:4px 6px}.gtab th:first-child,.gtab td:first-child{text-align:left}
+.gtab td{text-align:right;border-bottom:1px solid var(--rule);padding:4px 6px}
+/* map */
+.pane{position:relative;height:min(62vh,560px);min-height:380px;border:1px solid var(--border);border-radius:4px;background:#EEF1F2;overflow:hidden;margin:18px 0 8px}
+#map{position:absolute;inset:0}
+.ov-top{position:absolute;z-index:6;left:10px;top:10px;right:54px;display:flex;gap:6px;flex-wrap:wrap;pointer-events:none}
+.ov-top>*{pointer-events:auto}
+.mchip{font:500 12px/1 var(--mono);background:rgba(251,245,228,.95);color:#2B2119;border:1px solid #9C8656;border-radius:999px;padding:8px 11px;cursor:pointer;min-height:34px;white-space:nowrap}
+.mchip[aria-pressed="true"]{background:#B4442E;color:#fff;border-color:#2B2119}
+.mchip.lyr{background:#2B2119;color:#F6EED8;border-color:#2B2119}
+.lp{position:absolute;left:10px;top:54px;z-index:9;background:rgba(251,245,228,.98);border:1px solid #9C8656;border-radius:4px;padding:10px 12px 8px;font:400 13px/1.3 var(--mono);color:#2B2119;box-shadow:0 3px 12px rgba(60,40,10,.25);display:none;min-width:240px}
+.lp.open{display:block}.lp h4{margin:0 0 6px;font:500 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#7A6A52}
+.lp label{display:flex;gap:8px;align-items:center;padding:5px 0;cursor:pointer;min-height:30px}.lp input{accent-color:#B4442E;width:16px;height:16px;flex:none}
+.keys{position:absolute;left:10px;bottom:28px;z-index:4;background:rgba(251,243,220,.96);border:1px solid #9C8656;border-radius:3px;padding:8px 10px;font:400 11.5px/1.25 var(--mono);color:#2B2119;max-width:250px}
+.keys b{display:block;font:800 14px/1.1 var(--display);margin-bottom:5px}
+.keys .bar{height:10px;border:1px solid rgba(43,33,25,.4)}
+.keys .ends{display:flex;justify-content:space-between;font-size:10.5px;color:#6E604E;margin-top:2px}
+.keys .row{display:flex;align-items:center;gap:6px;margin-top:5px}.keys .sq{width:12px;height:10px;background:#C4C0B8;border:1px solid #bbb}
+.maplibregl-popup-content{background:#FBF5E4;color:#2B2119;font:400 13px/1.45 var(--mono);border:1px solid #9C8656;border-radius:4px;padding:10px 12px;max-width:300px}
+.maplibregl-popup-content b.t{display:block;font:800 19px/1.15 var(--display);color:#B4442E;margin-bottom:3px;padding-right:14px}
+.maplibregl-popup-content table{border-collapse:collapse;margin:5px 0}.maplibregl-popup-content td{padding:1px 8px 1px 0;vertical-align:top}
+.maplibregl-popup-content td:first-child{color:#7A6A52}.maplibregl-popup-content .nt{color:#7A6A52;font-size:11.5px;margin:5px 0 0}
+.maplibregl-popup{z-index:8}.maplibregl-ctrl-attrib{font:400 11px/1.3 var(--mono)!important}
+.nojs{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:400 14px var(--mono);color:#6E604E;padding:20px;text-align:center}
+@media (max-width:600px){.tb-k,.tb-links a.x{display:none}.topbar{gap:10px}.tb-name{font-size:15px}.tb-links{gap:10px}
+  .plot{height:340px}.seg button .lg{display:none}.gtab .xs{display:none}.keys{bottom:36px}.seg button .sh{display:inline}.ctl .lab{display:none}.seg button{padding:8px 9px}.chip{font-size:11.5px;padding:6px 8px}.dek{font-size:18px}.keys{max-width:190px;font-size:10.5px;padding:6px 8px}.keys .kx{display:none}.lp{right:10px;min-width:0}}
+</style></head>
+<body>
+<div class="topbar">
+  <a class="tb-name" href="#top">The half-life of fame</a>
+  <span class="tb-k">Data study · 2026</span>
+  <nav class="tb-links"><a href="#essay">About</a><button class="theme" id="theme" aria-label="Toggle dark mode">◐</button><a href="https://doi.org/10.5281/zenodo.24095452">Paper</a><a class="x" href="https://github.com/Tristan-Hotham/fame-half-life">Data and code</a></nav>
+</div>
+<div class="wide" id="top">
+<div class="head">
+  <div class="kicker"><b>Data study</b><span>2026</span><span>16,397 people</span></div>
+  <h1>The half-life <span class="a">of fame</span></h1>
+  <p class="dek">When someone notable dies, many of us look them up. I followed the English Wikipedia articles of 16,397 people who died between 2016 and 2023, from a year before their death to as much as five years after it. Pick a group below to see how the attention rises and fades.</p>
+  <div class="byline">Dr Tristan Hotham · Independent researcher · 2026</div>
+</div>
+<div class="card" id="chartCard" data-fullscreen-map aria-label="Interactive chart of attention by months since death">
+  <div class="ctl">
+    <span class="lab">Compare</span>
+    <div class="seg" id="dim" role="group" aria-label="Compare groups by"><button data-d="family" aria-pressed="true"><span class="lg">Occupation</span><span class="sh">Job</span></button><button data-d="ageb" aria-pressed="false"><span class="lg">Age at death</span><span class="sh">Age</span></button><button data-d="sex2" aria-pressed="false">Sex</button><button data-d="lang" aria-pressed="false"><span class="lg">Citizenship</span><span class="sh">Country</span></button></div>
+    <span class="lab">Scale</span>
+    <div class="seg" id="scale" role="group" aria-label="Vertical scale"><button data-s="log" aria-pressed="true">Log</button><button data-s="lin" aria-pressed="false">Linear</button></div>
+    <span class="lab">Show</span>
+    <div class="seg" id="win" role="group" aria-label="Time window"><button data-w="60" aria-pressed="true">5 years</button><button data-w="12" aria-pressed="false">First year</button></div>
+  </div>
+  <div class="chips" id="chips" role="group" aria-label="Groups shown"></div>
+  <div class="plot" id="plot"><div class="tip" id="tip"></div></div>
+  <p class="note">Median ratio of each month's share of all English Wikipedia views to the person's own average 12 to 2 months before death. 1 = as before. Shaded: 95% interval for the first group shown. Grey: everyone. Labels at the right end name the lines (values on phones). Months 35 to 60 come from deaths in 2016 to 2021 only. Tap a group to add or remove it; hover or tap the chart for values.</p>
+  <div class="tscroll"><table class="gtab" id="gtab"></table></div>
+</div>
+<div class="stats">
+<div class="stat"><b>14.9x</b><span>median attention in the month of death, against the year before</span></div>
+<div class="stat"><b>11 days</b><span>half-life of the first rush; the rest fades with a half-life of 6.9 months</span></div>
+<div class="stat"><b>0.98</b><span>where attention settles two to three years later (1 = as before)</span></div>
+<div class="stat"><b>1.47</b><span>the same for people who died under 50; 0.89 for those who died at 90 or over</span></div>
+</div>
+</div>
+<div class="wrap" id="essay">
+<p>This study is about attention, not about the people themselves. A Wikipedia article being read more or less says nothing about the worth of a life. But the pattern across thousands of lives says something about how a culture remembers: how quickly a death becomes news, and how quickly the news becomes the past.</p>
+<div class="byline">Data: English Wikipedia user pageviews (Wikimedia, CC0), Wikidata (CC0) · Map: Natural Earth (public domain), OpenFreeMap Positron (OpenStreetMap, ODbL)</div>
+
+<h2><span class="n">01 · The spike</span>A month of looking up</h2>
+<p>In the month someone dies, the typical person's article is read 14.9 times as much as it was in the year before, as a share of all English Wikipedia reading. Taking the higher of that month and the next (for deaths late in a month), the median peak is 16.5 times the usual level, and a quarter of people see more than 39 times. Then it falls away fast. The month after the death the median is 2.77, by the second month 1.44, and a year on 1.07, with a small bump at the first anniversary.</p>
+<div class="figure"><img src="img/decay.jpg" alt="Line chart of median relative attention by months since death: flat just under 1 before death, a spike to 14.9 times in the month of death, 2.77 the month after, then a slow slide to just under 1 by two to three years" loading="lazy"><p class="src">Median across 16,397 people, with a 95% interval.</p></div>
+
+<h2><span class="n">02 · Two speeds</span>Fast, then slow</h2>
+<p>The fall has two speeds. A model with two decaying parts fits the curve more closely than a single exponential or a power law: the first rush has a half-life of about 11 days, and the remaining extra attention fades with a half-life of about 6.9 months. This loosely echoes the idea, from studies of collective memory, of a short burst of news and conversation followed by a slower settling, though what is measured here is looking up, not memory. A power law, the other common shape for forgetting, predicted later deaths slightly better when fitted on earlier ones, so the two-part model is the better description rather than a proven law.</p>
+<div class="figure"><img src="img/fits.jpg" alt="Log-log chart of the median curve from month 1 to 60 with three fitted models; the two-phase model follows the points most closely" loading="lazy"><p class="src">Three decay models fitted to the median curve.</p></div>
+
+<h2><span class="n">03 · The settling point</span>Back to where they were</h2>
+<p>Two to three years after a death, the typical article gets 0.98 of its pre-death share of attention (95% interval 0.97 to 0.99). Death does not, on average, make someone more looked up in the long run. 48% of people end above their old level and the rest below. One way to judge this is against people who had not died yet: two years before each death, attention to the same articles was drifting down by about 3% a year. A second check, exploratory and added after the plan, looks at how attention changed over the two to three years before each death: it fell by about 5%. Measured against that drift, people end about 5% above where they would otherwise have been (95% interval 3% to 6%), assuming the old drift would have continued.</p>
+<div class="figure"><img src="img/placebo.jpg" alt="Two lines for the same people: around the real date of death a spike to about 15 times, around a made-up date two years earlier a flat line just under 1" loading="lazy"><p class="src">A placebo test: the same people around a made-up date two years before their death.</p></div>
+
+<h2><span class="n">04 · Who keeps the attention</span>Young deaths, and performers</h2>
+<p>The clearest difference is age. People who died under 50 had a median peak of 99 times their usual attention, and two to three years later still had 1.47 times it. People who died at 90 or over peaked at 12 times and settled at 0.89. In a model that also allows for occupation, citizenship, sex, fame before death and the year of death, dying under 50 goes with 63% more lasting attention than dying at 65 to 79 (95% interval 51% to 77%), and this holds in all 21 planned checks. It does not show up at a made-up date before the death, so it is not just that younger people's articles were already rising.</p>
+<div class="figure"><img src="img/age.jpg" alt="Lines by age at death: under 50 peaks near 100 times and stays near 1.5; 90 and over peaks near 12 times and settles below 0.9" loading="lazy"><p class="src">Median attention by age at death.</p></div>
+<p>Among occupations, performers (actors, musicians, singers, directors) are the only group whose typical attention ends above where it started (1.10). Religious figures settle lowest (0.83). In the model every other group keeps less than performers, sport by 31% and politics and law by 24%. Part of these gaps was there before the deaths, though: at the made-up earlier date, sportspeople's and scientists' articles were already fading faster. Journalists and religious figures get unusually large spikes, scientists small ones.</p>
+<div class="figure"><img src="img/families.jpg" alt="Ten small charts of attention by months since death, one per occupation family; performers stay above 1 after the spike, religious figures fall lowest" loading="lazy"><p class="src">Median attention by occupation family (one sampled occupation per person).</p></div>
+<p>Women and men are hard to tell apart. The typical woman settles at 1.02 and the typical man at 0.97; in the model women come out 3% lower, but that difference disappears in most of the checks, so I would not read anything into it. Citizens of English-speaking countries have smaller typical spikes on English Wikipedia (13.9 times against 21.4), perhaps because more readers already know them. Comparing people with the same attention before death, they keep more of it later (+23%), but without that comparison the difference disappears and in a median regression it is only 6%, so this one is not robust either.</p>
+<div class="figure"><img src="img/effects.jpg" alt="Dot and whisker chart of percentage differences in lasting attention and in the peak by age, sex, citizenship and occupation, with dying under 50 the largest positive effect" loading="lazy"><p class="src">Differences from the main model, with 95% intervals.</p></div>
+
+<h2><span class="n">05 · Around the world</span>Where fame lasts</h2>
+<p>The map shows, for each country of citizenship with at least 30 people, the median attention two to three years after death against before it. It is a map of English Wikipedia's readers as much as of the countries: readers are spread around the world, but English-language coverage is uneven. Tap a country for its numbers.</p>
+</div>
+<div class="wide">
+<div class="pane" id="mapWrap" data-fullscreen-map role="application" aria-label="World map of median attention two to three years after death by country of citizenship">
+  <div id="map"></div>
+  <div class="nojs" id="nojs">Loading the map. It needs JavaScript and WebGL.</div>
+  <div class="ov-top">
+    <button class="mchip" data-m="lr" aria-pressed="true">2 to 3 years on</button><button class="mchip" data-m="y1" aria-pressed="false">A year on</button><button class="mchip" data-m="pk" aria-pressed="false">Peak</button><button class="mchip lyr" id="lyrBtn" aria-expanded="false" aria-controls="lp">Layers</button>
+  </div>
+  <div class="lp" id="lp" role="dialog" aria-label="Map layers">
+    <h4>Layers</h4>
+    <label><input type="checkbox" id="lyC" checked> Countries with 30 or more people</label>
+    <label><input type="checkbox" id="lyG" checked> Countries with fewer (grey)</label>
+    <label><input type="checkbox" id="lyB" checked> Base map and place names</label>
+    <label><input type="checkbox" id="lyO" checked> Country outlines</label>
+  </div>
+  <div class="keys" id="keys"><b id="keyTitle">Two to three years on</b><div class="bar" id="keyBar"></div><div class="ends" id="keyEnds"><span>0.8</span><span>1 = as before</span><span>1.2</span></div>
+    <div class="row kx"><span class="sq"></span>fewer than 30 people</div><div class="row kx" style="color:#6E604E">by country of citizenship; historic states not shown</div></div>
+</div>
+</div>
+<div class="wrap">
+<div class="figure"><img src="img/map.jpg" alt="World map coloured from blue to red by median attention two to three years after death, by country of citizenship" loading="lazy"><p class="src">The map above, as a still.</p></div>
+
+<h2><span class="n">06 · New articles</span>Known first in death</h2>
+<p>Some people get a Wikipedia article only when they die. Of the 26,236 people I could follow, 4,126 (15.7%) had an article that was first read, under its current title, in the month of their death or the month after. Their attention has no "before" to compare with, so they are left out of the numbers above. Two to three years later, the typical one of these articles was read about 23% as often as in its first full month. A further 4,524 articles were first read two or more months after the death; these are articles either renamed after the death (for example to tell two people of the same name apart), whose earlier views sit under the old title, or written months or years later; the data cannot tell which. They are left out too, and more of them are about women and about people from outside the English-speaking world.</p>
+
+<h2><span class="n">07 · How I did this</span>Pageviews and a plan</h2>
+<p><b>People.</b> Wikidata lists 98,246 people with an English Wikipedia article and a date of death in 2016 to 2023. I took a fixed 30% sample by a hash of each Wikidata ID (29,384 people) and fetched each article's monthly views by people (not identified bots) from Wikimedia, 2015 to 2026. I dropped dates of death recorded as 1 January (often a year given without a day), the earliest deaths in 2016 (too little "before"), and articles that did not yet exist a year before the death.</p>
+<p><b>Measure.</b> Each month's views are taken as a share of all English Wikipedia views that month, because overall reading has fallen over the decade. Everything is then compared with the person's own average from 12 to 2 months before the death.</p>
+<p><b>Models.</b> I wrote the analysis plan before computing any of the after-death numbers. The main model is a regression of the long-run ratio (on a log scale) on occupation family, sex, age at death, citizenship, Wikidata sitelinks, attention before death, and the year and calendar month of death, with uncertainty clustered by month of death. I reran it 21 ways: median regression, trimming outliers, leaving out each year and US citizens, raw views instead of shares, and other windows and baselines; the placebo date is a separate test.</p>
+<p><b>What this cannot say.</b> Reading an article is not the same as remembering or valuing a person. English Wikipedia is one audience. Wikidata gives one sampled occupation and one citizenship per person, and the cause of death is not in the data, so sudden and expected deaths cannot be separated. Articles renamed after a death drop out of the "before and after" sample.</p>
+<details><summary>Sources and licences</summary>
+<ul class="plain">
+<li>English Wikipedia pageviews, agent "user", monthly, 2015 to 2026, from the Wikimedia pageviews API (CC0).</li>
+<li>People, dates, sex, occupations, citizenships and sitelinks from Wikidata, via QLever (CC0).</li>
+<li>Country shapes: Natural Earth (public domain). Base map: OpenFreeMap Positron style (OpenStreetMap, ODbL). MapLibre GL JS 4.7.1 (BSD 3-Clause).</li>
+<li>Text and figures CC BY 4.0; code MIT; derived data CC BY 4.0.</li>
+</ul></details>
+<div class="cta"><a class="p" href="https://doi.org/10.5281/zenodo.24095452">Read the paper</a><a href="https://github.com/Tristan-Hotham/fame-half-life">Data and code</a><a href="https://blog.tristanhotham.com/2026/10/31/fame-half-life/">Blog post</a></div>
+<footer>
+<p>Dr Tristan Hotham, Independent researcher. ORCID <a href="https://orcid.org/0000-0003-4931-9349">0000-0003-4931-9349</a>.</p>
+<p>Cite as: Hotham, T. (2026) The half-life of fame: attention to notable people on English Wikipedia after their deaths. Zenodo. <a href="https://doi.org/10.5281/zenodo.24095452">10.5281/zenodo.24095452</a></p>
+<p>Code: <a href="https://github.com/Tristan-Hotham/fame-half-life">github.com/Tristan-Hotham/fame-half-life</a> (MIT). Text, figures and data CC BY 4.0.</p>
+<p>I wrote the text, with drafting and editing assistance from Claude (Anthropic), which also helped prepare the analysis code. I reviewed and checked all text and results.</p>
+</footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="js/page.js?v=20261110"></script>
+<!-- map-fullscreen v1 -->
+<style id="mfs-style">
+.mfs-btn{position:absolute;top:10px;right:10px;z-index:1001;width:34px;height:34px;border:2px solid rgba(0,0,0,.25);border-radius:4px;background:#fff;color:#222;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.mfs-btn:hover{background:#f2f2f2}
+.mfs-btn svg{width:18px;height:18px}
+.mfs-host.mfs-btn-left .mfs-btn{right:auto;left:54px}
+.mfs-fake{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;max-width:none!important;max-height:none!important;margin:0!important;z-index:100000!important;border-radius:0!important}
+html.mfs-lock,html.mfs-lock body{overflow:hidden!important}
+:fullscreen.mfs-host{width:100vw!important;height:100vh!important;max-width:none!important;max-height:none!important;margin:0!important;border-radius:0!important}
+</style>
+<script id="mfs-script">
+(function(){
+  var ICON_OPEN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>';
+  var ICON_CLOSE='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg>';
+  function poke(){setTimeout(function(){window.dispatchEvent(new Event('resize'));},60);setTimeout(function(){window.dispatchEvent(new Event('resize'));},400);}
+  function realFS(){return document.fullscreenElement||document.webkitFullscreenElement;}
+  function add(el){
+    if(el.__mfs)return; el.__mfs=1;
+    var cs=getComputedStyle(el); if(cs.position==='static')el.style.position='relative';
+    el.classList.add('mfs-host');
+    // avoid clashing with a top-right Leaflet control (e.g. "Map layers")
+    var tr=el.querySelector('.leaflet-top.leaflet-right');
+    if(tr&&tr.children.length){ el.classList.add('mfs-btn-left'); }
+    var b=document.createElement('button'); b.type='button'; b.className='mfs-btn';
+    b.title='Full screen map'; b.setAttribute('aria-label','Full screen map'); b.innerHTML=ICON_OPEN;
+    ['click','dblclick','mousedown','touchstart','wheel'].forEach(function(t){b.addEventListener(t,function(e){e.stopPropagation();},{passive:t!=='click'});});
+    function setIcon(on){b.innerHTML=on?ICON_CLOSE:ICON_OPEN;b.title=on?'Exit full screen':'Full screen map';b.setAttribute('aria-label',b.title);}
+    function exitFake(){el.classList.remove('mfs-fake');document.documentElement.classList.remove('mfs-lock');setIcon(false);poke();}
+    b.addEventListener('click',function(e){
+      e.preventDefault();
+      if(el.classList.contains('mfs-fake')){exitFake();return;}
+      if(realFS()){(document.exitFullscreen||document.webkitExitFullscreen).call(document);return;}
+      var req=el.requestFullscreen||el.webkitRequestFullscreen;
+      if(req){ try{ var p=req.call(el); if(p&&p.catch)p.catch(function(){el.classList.add('mfs-fake');document.documentElement.classList.add('mfs-lock');setIcon(true);poke();}); }catch(err){el.classList.add('mfs-fake');document.documentElement.classList.add('mfs-lock');setIcon(true);poke();} }
+      else { el.classList.add('mfs-fake');document.documentElement.classList.add('mfs-lock');setIcon(true);poke(); }
+    });
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&el.classList.contains('mfs-fake'))exitFake();});
+    ['fullscreenchange','webkitfullscreenchange'].forEach(function(t){document.addEventListener(t,function(){setIcon(realFS()===el);poke();});});
+    el.appendChild(b);
+  }
+  function scan(){
+    var els=document.querySelectorAll('[data-fullscreen-map], .leaflet-container, .maplibregl-map, .mapboxgl-map');
+    els.forEach(function(el){
+      if(el.closest('.mfs-host')&&!el.classList.contains('mfs-host'))return;
+      var r=el.getBoundingClientRect(); if(r.width<200||r.height<150)return;
+      add(el);
+    });
+  }
+  function start(){scan(); var n=0; var t=setInterval(function(){scan(); if(++n>20)clearInterval(t);},500);}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start); else start();
+})();
+</script>
+<!-- /map-fullscreen -->
+
+<script src="https://maps.tristanhotham.com/assets/site-nav.js" defer></script>
+</body>
+</html>

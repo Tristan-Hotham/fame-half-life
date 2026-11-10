@@ -1,0 +1,16 @@
+{
+  "title": "The half-life of fame: what happens to our attention after a notable person dies",
+  "slug": "fame-half-life",
+  "excerpt": "I followed the English Wikipedia articles of 16,397 people who died between 2016 and 2023. In the month of a death the typical article is read 14.9 times as much as usual; two to three years later it is back to 0.98 of its old level. People who died young keep the most.",
+  "seo_description": "How fast does attention fade after a notable death? 16,397 people followed on English Wikipedia, 2016 to 2026.",
+  "tags": [
+    "data visualisation",
+    "Wikipedia",
+    "collective memory",
+    "fame",
+    "attention",
+    "Wikidata",
+    "forgetting"
+  ],
+  "header_alt": "Title card on cream paper reading 'The half-life of fame' beside a red line that spikes at the month of death and slowly falls back to its earlier level."
+}

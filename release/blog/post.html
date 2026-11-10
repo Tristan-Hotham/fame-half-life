@@ -1,0 +1,116 @@
+<!-- wp:paragraph -->
+<p><em>When someone notable dies, many of us look them up. I followed the English Wikipedia articles of 16,397 people who died between 2016 and 2023 to see how big that wave of attention is, how fast it fades, and where it settles. For most people, it settles almost exactly where it started.</em></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://maps.tristanhotham.com/fame-half-life/">Explore the interactive version</a></div>
+<!-- /wp:button -->
+<!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://doi.org/10.5281/zenodo.24095452">Read the paper</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons -->
+
+<!-- wp:paragraph -->
+<p>A Wikipedia article is a small public record of a life. When the person dies, the record is suddenly in demand: people want to know who they were, what they did, how old they were. I wanted to measure that moment across thousands of lives, not just the famous few, and then follow it for years, to see what remains once the news has moved on.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>Wikidata lists 98,246 people with an English Wikipedia article who died between 2016 and 2023. I took a fixed 30% sample of them and collected the monthly views of each article by people (not identified bots) from 2015 to 2026. To compare like with like, each month's views are taken as a share of all English Wikipedia reading that month, which has fallen by about 20% over the decade, and compared with the person's own level in the year before their death. After setting aside people whose articles did not yet exist a year before, 16,397 people remained.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">A month of looking up</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>In the month of a death, the typical article is read 14.9 times as much as usual. The month after, it is down to 2.77 times. By the second month, 1.44. A year on, 1.07, with a small bump on the first anniversary. Two to three years later, the typical person gets 0.98 of the attention they had before they died. Slightly less, not more.</p>
+<!-- /wp:paragraph -->
+
+{{IMG|b_decay.png|Line chart of median attention by months since death: flat just under 1 before death, a spike to 14.9 times in the month of death, 2.77 the month after, then a slow slide back to just under 1|Median attention to 16,397 people's English Wikipedia articles by months since their death, against their own level in the year before.}}
+
+<!-- wp:paragraph -->
+<p>The fall has two speeds. A model with two fading parts fits the curve best, although a simpler power law predicted later deaths slightly better: the first rush has a half-life of about 11 days, and what is left of the extra attention fades with a half-life of about 6.9 months. Scholars of memory distinguish between the memory carried in conversation and news and the memory kept in records and institutions. The curve loosely echoes that idea on a much shorter timescale: a burst of news, then a slow settling. It shows looking up, though, not memory itself.</p>
+<!-- /wp:paragraph -->
+
+{{IMG|b_fits.png|Chart of the median curve from month 1 to 60 on log scales with three fitted models; the two-phase model follows the points most closely|Three ways of describing the fade, fitted to the median curve.}}
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Back to where they were</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>So does death make someone more remembered? For the typical person, not much. 48% end up above their old level and the rest below. But attention to most articles was already drifting down before the death. I checked this by pretending each person had died two years earlier: around that made-up date, attention fell by about 3% over a year, with no spike at all. A second, exploratory check that I added after the plan looked at the two to three years before each death: over that stretch attention fell by about 5%. Measured against that drift, people end up roughly 5% above where they might otherwise have been. That is a modest trace, it was not part of the plan, and it rests on assuming the old drift would have continued.</p>
+<!-- /wp:paragraph -->
+
+{{IMG|b_placebo.png|Two lines for the same people: a spike to about 15 times around the real date of death, and a flat line just under 1 around a made-up date two years earlier|The same people around their real date of death and around a made-up date two years before it.}}
+
+<!-- wp:pullquote -->
+<figure class="wp-block-pullquote"><blockquote><p>A month of looking up, then, for most people, back to where they were before.</p></blockquote></figure>
+<!-- /wp:pullquote -->
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">People who died young kept the most attention</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>The biggest difference is age. People who died under 50 saw a median peak of 99 times their usual attention and, two to three years later, still had 1.47 times it. People who died at 90 or over peaked at 12 times and settled at 0.89. Comparing people with the same occupation, citizenship and fame before death, dying under 50 goes with 63% more lasting attention than dying at 65 to 79, and this held in every one of the 21 checks I planned. It did not appear at the made-up earlier date, so it is not just that younger people's articles were already on the rise. The data cannot say why: younger deaths are more often sudden, and more often of people still working.</p>
+<!-- /wp:paragraph -->
+
+{{IMG|b_age.png|Lines by age at death: under 50 peaks near 100 times and stays near 1.5; 90 and over peaks near 12 times and settles below 0.9|Median attention by age at death, with the median peak for each age group.}}
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">Performers keep it, mostly</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>Actors, musicians, singers and directors are the only group whose typical attention ends above where it began (1.10). Religious figures end lowest (0.83). Journalists and religious figures get unusually big spikes, scientists small ones. Perhaps their films and songs keep circulating, though the data cannot show that. Part of these gaps was there before the deaths, though: at the made-up earlier date, sportspeople's and scientists' articles were already fading faster than performers'. Women and men end up in about the same place; the small difference the model finds disappears in most of the checks. People from English-speaking countries keep more attention in one version of the model but not in others, so I would not read anything into that either.</p>
+<!-- /wp:paragraph -->
+
+{{IMG|b_families.png|Ten small charts of attention by months since death, one per occupation family; performers stay above 1 after the spike while religious figures fall lowest|Median attention by occupation family against everyone (grey).}}
+
+<!-- wp:paragraph -->
+<p>One more group never appears in those charts. Of the people I could follow, 4,126 (15.7%) had an English Wikipedia article that was first read, under its current title, in the month of their death or the month after. Most of them seem to be people whom the encyclopedia's readers met only when they died. Two to three years later, the typical one of those articles was read about 23% as often as in its first full month.</p>
+<!-- /wp:paragraph -->
+
+{{IMG|b_map.png|World map coloured from blue to red by median attention two to three years after death against before it, by country of citizenship|Median attention two to three years after death by country of citizenship (30 or more people).}}
+
+<!-- wp:heading -->
+<h2 class="wp-block-heading">How I did this</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph -->
+<p>I wrote the analysis plan down before computing anything after the deaths, including which models of fading to compare and which regression to run. The main regression compares the long-run attention of people by occupation, sex, age at death, citizenship and fame before death, within the same year and month of death. I then reran it 21 ways: median rather than mean, trimming the most extreme people, leaving out each year and US citizens, using raw views, different windows and baselines. Separately, I tested the made-up earlier date. Occupations come from Wikidata, which gives one sampled occupation per person, grouped into ten broad families.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>This is a description, not an experiment. Reading an article is not the same as remembering or valuing a person, and English Wikipedia is one audience among many. The cause of death is not in the data, so sudden and expected deaths cannot be told apart. Articles renamed or written after a death drop out, because they have no earlier views under their current title, and more of those are about women and people outside English-speaking countries. And none of this measures the worth of a life.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://maps.tristanhotham.com/fame-half-life/">Explore the interactive version</a></div>
+<!-- /wp:button -->
+<!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://doi.org/10.5281/zenodo.24095452">Read the paper</a></div>
+<!-- /wp:button -->
+<!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="https://github.com/Tristan-Hotham/fame-half-life">Data and code</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons -->
+
+<!-- wp:heading {"level":3} -->
+<h3 class="wp-block-heading">Notes and sources</h3>
+<!-- /wp:heading -->
+
+<!-- wp:list -->
+<ul class="wp-block-list"><!-- wp:list-item -->
+<li>English Wikipedia pageviews by users, monthly, 2015 to 2026, from the Wikimedia pageviews API (CC0). People, dates, occupations, citizenships and sitelinks from Wikidata (CC0). Country shapes from Natural Earth (public domain).</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li>Further reading: C. Candia and others, The universal decay of collective memory and attention, Nature Human Behaviour (2019); R. West, J. Leskovec and C. Potts, Postmortem memory of public figures in news and social media, PNAS (2021); B. Keegan and J. Brubaker, 'Is' to 'was': coordination and commemoration in posthumous activity on Wikipedia biographies, CSCW (2015).</li>
+<!-- /wp:list-item -->
+<!-- wp:list-item -->
+<li>I wrote the text, with drafting and editing assistance from Claude (Anthropic), which also helped prepare the analysis code. I reviewed and checked all text and results.</li>
+<!-- /wp:list-item --></ul>
+<!-- /wp:list -->
